@@ -12,7 +12,9 @@ class Config
     * @example ["example_data" => 'foo',]
     * @return void
     */
-    public $plugin_options = [];
+    public $plugin_options = [
+        "cambiar_fuente" => "no"
+    ];
     /**
      * Language Option
      * define a unique word for translate call
@@ -28,7 +30,10 @@ class Config
      * get the post data and execute the function
      * @example ['post_data'=>'MCPTC::function']
      */
-    public $post = [];
+    public $post = [
+
+        "cambiar_fuente" => __NAMESPACE__ . "\AdminController::save",
+    ];
     /**
      * GET data process
      * get the get data and execute the function
@@ -41,14 +46,25 @@ class Config
      * @example ['body_class','MCPTC::function',10,2]
      * @example ['body_class',['MCPTC','function'],10,2]
      */
-    public $add_filter = [];
+    public $add_filter = [
+        // manage_slug_post_colum
+        ["manage_computer_posts_columns", [__NAMESPACE__ . '\ComputersController', "tablaColumnas"], 10, 2],
+
+    ];
     /**
      * add_action data functions
      * @input array
      * @example ['body_class','MCPTC::function',10,2]
      * @example ['body_class',['MCPTC','function'],10,2]
      */
-    public $add_action = [];
+    public $add_action = [
+
+        ["cmb2_admin_init", __NAMESPACE__ . '\ComputersController::cmb2_sample_metaboxes', 10, 2],
+        ["admin_head", __NAMESPACE__ . '\AdminController::mostrar', 10, 2],
+        ["wpcf7_before_send_email", __NAMESPACE__ . '\ContactoController::save', 10, 2],
+
+        ["manage_computer_posts_custom_column", __NAMESPACE__ . '\ComputersController::tablaColumnasContenido', 10, 2],
+    ];
     /**
      * add custom shortcodes
      * @input array
@@ -86,6 +102,13 @@ class Config
     * set your menu option here
     */
     public $plugin_menu = [
+        [
+            "path"      => ["page"],
+            "name"      => "Computer Page",
+            "function"  => __NAMESPACE__ . "\AdminController::index",
+            "icon"      => "computadora.png",
+            "slug"      => "computer-page",
+        ]
         /*
         [
             "path"      => ["page"],
@@ -147,7 +170,8 @@ class Config
                 "slug"      => "sub-option",
                 "function"  => __NAMESPACE__."\Admin::option_page",
             ]
-        */];
+        */
+    ];
 
     /**
      * Custom Post Type
@@ -161,10 +185,25 @@ class Config
         [
             "singular"      => "Computer",
             "plural"        => "Computers",
-            "slug"          => "Computer",
+            "slug"          => "computer",
             "position"      => 4,
             "taxonomy"      => ['Category'], //['category','category2','category3'],
             "image"         => "computadora.png",
+            "gutemberg"     => false,
+            //advanced
+            /*
+            'labels'        => [],
+            'args'          => [],
+            'rewrite'       => []
+            */
+        ],
+        [
+            "singular"      => "Contact",
+            "plural"        => "Contacts",
+            "slug"          => "mcf7_contact",
+            "position"      => 5,
+            "taxonomy"      => ['Category'], //['category','category2','category3'],
+            "image"         => "contactos.png",
             "gutemberg"     => false,
             //advanced
             /*

@@ -1,7 +1,7 @@
 <?php
 namespace MCPTC;
 /*
-Plugin Name: My Custom Post Type Compueters
+Plugin Name: My Custom Post Type Computers
 Plugin URI:
 Description:Another plugin developed on Antonella Framework for WP
 Version: 1.7
@@ -25,5 +25,9 @@ defined( 'ABSPATH' ) or die( __('Lo siento por aqui no puedes pasar :)') );
 * @return null
 */
 define('NELLA_URL',__FILE__);
+
 $loader = require __DIR__ . '/vendor/autoload.php';
+// se agrega esto para que este disponible en todo el framework
+require_once __DIR__ . '/vendor/cmb2/cmb2/init.php';
+
 $antonella= new Start;
