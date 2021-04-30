@@ -1,9 +1,13 @@
-@if(1==2)
-<div>es verdad</div>
-@else
-<div>es mentira</div>
-@endif
-<div class="" style="display: flex;justify-content: center">
 
-    {{$dato}}
-</div>
+{{-- extendiende de layouts.app --}}
+{{ $dato }}
+@extends('layouts.app')
+{{-- reemplaza los yield --}}
+@section('title',"Algun titulo :D")
+@section('content')
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam commodi autem ratione impedit harum, eveniet similique sit, laborum ut rerum, tenetur nulla modi ullam consectetur vel. Sapiente explicabo quis accusamus?</p>
+    @include('helpers.saludo',["nombre"=>"Chicho proyectos"])
+    @php
+        echo "<br>esto es php puro";
+    @endphp
+@endsection

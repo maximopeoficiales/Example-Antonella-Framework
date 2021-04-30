@@ -165,7 +165,7 @@ class Config
             "position"      => 4,
             "taxonomy"      => ['Category'], //['category','category2','category3'],
             "image"         => "computadora.png",
-            // "gutemberg"     => true,
+            "gutemberg"     => false,
             //advanced
             /*
             'labels'        => [],

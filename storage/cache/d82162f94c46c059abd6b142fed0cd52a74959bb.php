@@ -1,0 +1,1 @@
+<h6>Esto es un saludo para  <?php echo e($nombre); ?></h6><?php /**PATH /var/www/html/wp-content/plugins/mi-custom-post-type-computers/resources/views/helpers/saludo.blade.php ENDPATH**/ ?>
