@@ -51,7 +51,7 @@ class UrlWidget extends \WP_Widget
     {
         //Build the code for show the widget in plubic zone.
         extract($args);
-        $html = "{$instance['title']} {$instance['url']}";
+        $html = "<b>{$instance['title']} {$instance['url']}</b>";
         // you can edit this function for make the html//
         //
         ////////////////////////////////////////////////

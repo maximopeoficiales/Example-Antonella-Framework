@@ -105,4 +105,37 @@ class ComputersController
 
         die(($query->post->post_title));
     }
+    // agregar ordenamiento en columnas admin
+    public static function AsignarOrdenacion($columns)
+    {
+        $columns['text_prueba'] = 'text_prueba_ord';
+        $columns['web'] = 'web_ord';
+
+        return $columns;
+    }
+
+    public static function OrdenarColumnas($request)
+    {
+        if (isset($request['post_type']) && 'computer' == $request['post_type']) {
+            if (isset($request['orderby']) &&  'text_prueba' == $request['orderby']) {
+                $request = array_merge(
+                    $request,
+                    array(
+                        'meta_key' => 'text_prueba',
+                        'orderby' => 'meta_value'
+                    )
+                );
+            }
+            if (isset($request['orderby']) && 'web' == $request['orderby']) {
+                $request = array_merge(
+                    $request,
+                    array(
+                        'meta_key' => 'web',
+                        'orderby' => 'meta_value'
+                    )
+                );
+            }
+        }
+        return $request;
+    }
 }

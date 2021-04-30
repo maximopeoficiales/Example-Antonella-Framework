@@ -49,6 +49,10 @@ class Config
     public $add_filter = [
         // manage_slug_post_colum
         ["manage_computer_posts_columns", [__NAMESPACE__ . '\ComputersController', "tablaColumnas"], 10, 2],
+        // maneja el orden de una columna de post type column
+        ['manage_edit-computer_sortable_columns', __NAMESPACE__ . '\ComputersController::AsignarOrdenacion', 10, 1],
+        // maneja cuando un usuario da click en una peticion
+        ['request', __NAMESPACE__ . '\ComputersController::OrdenarColumnas', 10, 1]
 
     ];
     /**
