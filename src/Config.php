@@ -64,6 +64,9 @@ class Config
         ["wpcf7_before_send_email", __NAMESPACE__ . '\ContactoController::save', 10, 2],
 
         ["manage_computer_posts_custom_column", __NAMESPACE__ . '\ComputersController::tablaColumnasContenido', 10, 2],
+        
+        // computer_ramdom tiene que ser el input
+        ["wp_ajax_computer_ramdom", __NAMESPACE__ . '\ComputersController::ajaxComputerRamdom'],
     ];
     /**
      * add custom shortcodes
@@ -72,6 +75,7 @@ class Config
      */
     public $shortcodes = [
         ['hola', __NAMESPACE__ . '\ShortcodeController::index'],
+        ['btnramdom', __NAMESPACE__ . '\ComputersController::btnRamdom'],
     ];
     /**
      * add Gutenberg's blocks

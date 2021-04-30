@@ -76,4 +76,33 @@ class ComputersController
             echo get_post_meta($post_id, "yourprefix_text", true);
         }
     }
+    public static function btnRamdom()
+    {
+        $html = '<div class="ganador"></div><input type="button" id="boton-ganador" value="elige ganador" />
+            <script type="text/javascript">
+                var ajaxurl = "' . admin_url("admin-ajax.php") . '";
+                var data ={"action":"computer_ramdom"}
+                
+                jQuery(function($) {
+                $("#boton-ganador").on("click",function(e){
+                    $.post(ajaxurl, data, function(response) {
+                        $(".ganador").text(response);
+                    });
+                });
+                });
+            </script>';
+        return $html;
+    }
+    public static function ajaxComputerRamdom()
+    {
+        $query = new \WP_Query(
+            [
+                "post_type" => "computer",
+                "orderby" => "rand",
+                "limit" => "1",
+            ]
+        );
+
+        die(($query->post->post_title));
+    }
 }
